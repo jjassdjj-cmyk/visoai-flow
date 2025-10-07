@@ -2,8 +2,10 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/admob_util.dart' as admob;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'mine_model.dart';
 export 'mine_model.dart';
@@ -28,6 +30,15 @@ class _MineWidgetState extends State<MineWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MineModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      admob.loadInterstitialAd(
+        "ca-app-pub-3940256099942544/4411468910",
+        "ca-app-pub-3940256099942544/1033173712",
+        true,
+      );
+    });
   }
 
   @override
